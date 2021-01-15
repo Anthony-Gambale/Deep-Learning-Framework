@@ -1,7 +1,7 @@
 
 '''
 This file contains the class for the neural network, the main part of the framework. The main functions of the neural network are:
- * Feedforward
+ * Feedforward (done)
  * Backpropagation
 '''
 
@@ -40,4 +40,6 @@ class Network():
         return x
 
 
-print(Network().feedforward(np.array([[1], [1]])))
+if __name__ == "__main__":
+    # if this file is run, then do some console output
+    print(Network().feedforward([[1], [1]]))
