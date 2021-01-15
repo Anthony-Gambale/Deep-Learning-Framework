@@ -30,3 +30,5 @@ https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi
 https://sudeepraja.github.io/Neural/#:~:text=Backpropagation%20is%20an%20algorithm%20used,to%20minimize%20the%20loss%20function.
  * *Matrix Based Back-propagation* article by Hind Sellouk:  
 https://medium.com/@hindsellouk13/matrix-based-back-propagation-fe143ce2b2df
+ * *Deep Learning* ebook by Ian Goodfellow et. al. from MIT press  
+https://www.deeplearningbook.org/
