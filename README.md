@@ -17,7 +17,7 @@ I will also make the model scalable to any size, so that this program could pote
 ## Features
  * *(not yet implemented)* Neural network model with scalable size, and feedforward capability using weight matrices
  * *(not yet implemented)* Backpropagation step function that can be iterated
- * *(not yet implemented)* GUI capability, so the api could be used as a standalone program
+ * *(not yet implemented)* GUI capability, so the api could be used as a standalone app. May even make it into a web app
  * *(not yet implemented)* More sophisticated types of neural network, like CNNs or RNNs, rather than the basic feedforward net
 
 ## Sources
