@@ -24,3 +24,5 @@ I will also make the model scalable to any size, so that this program could pote
 My main research for this project.
  * *Neural Networks and Deep Learning* ebook by Michael Nielsen: http://neuralnetworksanddeeplearning.com/
  * *Neural Networks* web series by Grant Sanderson: https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi
+ * *A Derivation of Backpropagation in Matrix Form* article by Sudeep Raja: https://sudeepraja.github.io/Neural/#:~:text=Backpropagation%20is%20an%20algorithm%20used,to%20minimize%20the%20loss%20function.
+ * *Matrix Based Back-propagation* article by Hind Sellouk: https://medium.com/@hindsellouk13/matrix-based-back-propagation-fe143ce2b2df\
