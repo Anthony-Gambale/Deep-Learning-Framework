@@ -11,7 +11,7 @@ I will also make the model scalable to any size, so that this program could pote
 ## Requirements
  * Numpy (for matrix operations)
 
-## How to Run
+## Installing and Running
 *(not yet implemented)*
 
 ## Features
