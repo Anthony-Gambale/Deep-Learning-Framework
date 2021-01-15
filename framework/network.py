@@ -16,6 +16,7 @@ def sigmoid(z):
 
 class Network():
 
+
     def __init__(self, sizes=[2, 1], eta=0.0001):
         '''
         initialise a neural network with the given sizes, and learning rate.
