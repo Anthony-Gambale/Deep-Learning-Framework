@@ -3,9 +3,8 @@
 A deep learning framework, made from scratch in python.
 
 ## Introduction
-In the past, I have built many neural network models, but have neglected to learn backpropogation. I have always used brute force and randomisation for the training process. Now that I've graduated high school and am familiar with calculus and matrices, my next goal is to learn backpropagation through this project.
 
-My goal with this project is to apply my knowledge of calculus and matrices to learn how backpropagation works, and to implement it.
+My goal with this project is to apply my knowledge of calculus and matrices with my knowledge of the neural network feedforward algorithm to learn how backpropagation works. The final goal is to be able to implement it in this project.
 
 I will also make the model scalable to any size, so that this program could potentially be used as an API for a real project.
 
