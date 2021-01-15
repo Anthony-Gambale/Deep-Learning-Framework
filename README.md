@@ -10,10 +10,10 @@ My goal with this project is to apply my knowledge of calculus and matrices to l
 I will also make the model scalable to any size, so that this program could potentially be used as an API for a real project.
 
 ## Features
- * *not yet implemented* Neural network model with scalable size, and feedforward capability using weight matrices
- * *not yet implemented* Backpropagation step function that can be iterated
- * *not yet implemented* GUI capability, so the api could be used as a standalone program
- * *not yet implemented* More sophisticated types of neural network, like CNNs or RNNs, rather than the basic feedforward net
+ * *(not yet implemented)* Neural network model with scalable size, and feedforward capability using weight matrices
+ * *(not yet implemented)* Backpropagation step function that can be iterated
+ * *(not yet implemented)* GUI capability, so the api could be used as a standalone program
+ * *(not yet implemented)* More sophisticated types of neural network, like CNNs or RNNs, rather than the basic feedforward net
 
 ## Requirements
  * Numpy (for matrix operations)
