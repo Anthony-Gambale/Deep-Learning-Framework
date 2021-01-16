@@ -47,6 +47,7 @@ class Network():
         a = x # current activation
 
         for w, b in zip(self.weights, self.biases):
+            # feed forward
             z = np.matmul(w, a) + b
             a = sigmoid(z)
             # fill the arrays and continue
@@ -59,16 +60,26 @@ class Network():
             return activations[-1] # give the output
 
 
+    def dC_da(self, x, y):
+        '''give the derivative of the cost function, based on the given input and output'''
+        output = self.feedforward(x)
+        return (output - y) # no need for the 2*, as coefficients and proportions aren't important
+
 
     def gradients(self, x, y):
         '''based on the given input and output, calculate the error and output the gradients of all the parameters.
         x: input matrix
         y: output matrix'''
+
         # init matrices for the gradients
         nabla_b = [np.zeros(b.shape) for b in self.biases]
         nabla_w = [np.zeros(w.shape) for w in self.weights]
 
-        
+        activations, zs = self.feedforward(x, return_all=True)
+
+        # backward pass
+        dC_da0 = self.dC_da(x, y)
+
 
 
     def update_mini_batch(self, mini_batch, eta):
