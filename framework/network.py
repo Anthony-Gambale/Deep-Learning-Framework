@@ -38,10 +38,26 @@ class Network():
     #         activation = sigmoid(np.matmul(w, x) + b)
     #     return activation
 
-    def feedforward(self, x):
+
+    def feedforward(self, x, return_all=False):
         '''make a guess based on current parameters, and given input
         output an array of activations and z values calculated'''
-        
+        activations = [x] # list to store activations
+        zs = [None] # make the first value a placeholder, so that corresponding z values and activations have the same
+        a = x # current activation
+
+        for w, b in zip(self.weights, self.biases):
+            z = np.matmul(w, a) + b
+            a = sigmoid(z)
+            # fill the arrays and continue
+            zs.append(z)
+            activations.append(a)
+
+        if return_all:
+            return zs, activations # give all the details
+        else:
+            return activations[-1] # give the output
+
 
 
     def gradients(self, x, y):
