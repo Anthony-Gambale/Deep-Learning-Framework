@@ -9,7 +9,8 @@ My goal with this project is to combine my knowledge of calculus/matrices with m
 I will also make the model scalable to any size, so that this program could potentially be used as an API for a real project.
 
 ## Requirements
- * Numpy (for matrix operations) ```python -m pip install numpy```
+ * Numpy (for matrix operations)  
+```python -m pip install numpy```
 
 ## Installing and Running
 *(not yet implemented)*
