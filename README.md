@@ -31,5 +31,3 @@ https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi
 https://sudeepraja.github.io/Neural/
  * *Matrix Based Back-propagation* article by Hind Sellouk:  
 https://medium.com/@hindsellouk13/matrix-based-back-propagation-fe143ce2b2df
- * *Deep Learning* ebook by Ian Goodfellow et. al. from MIT press  
-https://www.deeplearningbook.org/
