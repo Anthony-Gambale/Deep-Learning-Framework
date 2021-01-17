@@ -77,9 +77,8 @@ class Network():
 
 
 def main():
-    perceptron = Network((2, 3, 3, 1))
-
-    #print(perceptron.weights, perceptron.biases)
+    '''run some code to test that it all works.'''
+    perceptron = Network((2, 3, 1))
 
     x1 = [[1], [1]]
     x2 = [[4], [4]]
@@ -87,6 +86,8 @@ def main():
     examples = [x1, x2]
 
     Zs, As = perceptron.feedforward_multi_example(examples)
+
+    print(As[0], "\n", Zs[1])
 
 
 if __name__ == "__main__":
