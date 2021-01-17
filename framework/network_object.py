@@ -26,7 +26,7 @@ class Network():
         '''
         self.eta = eta
 
-        self.number_of_layers = len(layer_node_numbers)
+        self.L = len(layer_node_numbers)
 
         # rows: number of output neurons
         # cols: number of input neurons
@@ -46,7 +46,7 @@ class Network():
         z = [None] # store all z values. make z[0] = none, because nothing has a 0th index except for a
         a = [x] # store all a values. make a[0] = x as it should be
 
-        for L in range(1, self.number_of_layers):
+        for L in range(1, self.L):
 
             z.append( np.matmul(self.weights[L], a[L-1]) + self.biases[L] )
             a.append( sigmoid(z[L]) )
@@ -57,13 +57,37 @@ class Network():
     def feedforward_multi_example(self, x_list):
         '''
         x_list: an array of x input matrices. feedforward every single input with only one matrix operation.
+        Note that all letters used are uppercase, to denote the fact that they contain many copies of lowercase versions of themselves within them, as they were used
+        the regular feedforward algorithm above.
         '''
         X = combine(x_list)
+        print(X)
+
+        Zs = [None] # no 0th element for Zs
+        As = [X] # the 0th element of As is X
+
+        for L in range(1, self.L):
+
+            Zs.append( np.matmul(self.weights[L], As[L-1]) + self.biases[L] )
+            As.append( sigmoid(Zs[L]) )
+        
+        # remember, Zs and As are not Z and A matrices themselves. they are a list containing all Z and A matrices for their respective layers, which themselves
+        # contain all z and a column vectors for their respective training examples.
+        return Zs, As
 
 
-perceptron = Network((1, 1, 1, 1))
+def main():
+    perceptron = Network((2, 3, 3, 1))
 
-print(perceptron.weights, perceptron.biases)
+    #print(perceptron.weights, perceptron.biases)
 
-z, a = perceptron.feedforward([1])
+    x1 = [[1], [1]]
+    x2 = [[4], [4]]
 
+    examples = [x1, x2]
+
+    Zs, As = perceptron.feedforward_multi_example(examples)
+
+
+if __name__ == "__main__":
+    main()
