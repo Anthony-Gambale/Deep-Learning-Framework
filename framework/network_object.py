@@ -2,7 +2,7 @@
 
 # imports
 import numpy as np
-from matrices_tools import *
+import matrices_tools as mt
 
 
 # sigmoid
@@ -43,15 +43,15 @@ class Network():
         '''
         x: a single input matrix
         '''
-        z = [None] # store all z values. make z[0] = none, because nothing has a 0th index except for a
-        a = [x] # store all a values. make a[0] = x as it should be
+        zs = [None] # store all z values. make z[0] = none, because nothing has a 0th index except for a
+        activations = [x] # store all a values. make a[0] = x as it should be
 
         for L in range(1, self.L):
 
-            z.append( np.matmul(self.weights[L], a[L-1]) + self.biases[L] )
-            a.append( sigmoid(z[L]) )
+            zs.append( np.matmul(self.weights[L], activations[L-1]) + self.biases[L] )
+            activations.append( sigmoid(zs[L]) )
 
-        return z, a
+        return zs, activations
 
 
     def feedforward_multi_example(self, x_list):
@@ -60,7 +60,7 @@ class Network():
         Note that all letters used are uppercase, to denote the fact that they contain many copies of lowercase versions of themselves within them, as they were used
         the regular feedforward algorithm above.
         '''
-        X = combine(x_list)
+        X = mt.combine(x_list)
 
         Zs = [None] # no 0th element for Zs
         As = [X] # the 0th element of As is X
@@ -75,23 +75,66 @@ class Network():
         return Zs, As
 
 
+    def dC_dz_final_layer(self, x, y):
+        '''
+        find the derivative of the Cost with respect to the z values of the output layer, **with respect to a single input/output pair** (x,y).
+        
+        Cx = 0.5 * (a - y) ^ 2
+        a = s(z)
+        dCx/da = 0.5 * 2 * (a - y) = (a - y)
+        da/dz = s'(z)
+        dCx/dz = dCx/da * da/dz = (a - y) * s'(z)
+
+        the output is a column vector, with the error for each node in the output layer stacked in a column.
+        '''
+        zs, activations = self.feedforward(x)
+
+        return (activations[-1] - y) * sigmoid_prime(zs[-1]) # hadamard product
+    
+
+    def dC_dz_final_layer_multi_example(self, x_list, y_list):
+        '''
+        do the same thing as the previous function, but with a big X matrix, where each column is an x vector, and a big Y matrix, where each column is a y vector.
+        also, A matrices are a big matrix where each column is an a vector, etc. the formula holds for this case.
+
+        the output is a matrix, where each column is a column vector of the error for each node in the output layer for a certain x/y pair. each column is a different x/y pair, and each row is a different
+        node in the output layer.
+        '''
+        Y = mt.combine(y_list)
+        Zs, As = self.feedforward_multi_example(x_list)
+
+        return (As[-1] - Y) * sigmoid_prime(Zs[-1])
+
+
 def main():
     '''run some code to test that it all works.'''
+    #  -- init --
     perceptron = Network((2, 3, 1))
 
     x1 = [[1], [1]]
     x2 = [[4], [4]]
 
-    examples = [x1, x2]
+    y1 = [[1], [1]]
+    y2 = [[1], [1]]
 
-    _, As = perceptron.feedforward_multi_example(examples)
+    x_list = [x1, x2]
+    y_list = [y1, y2]
 
+    # -- error --
+    error1 = perceptron.dC_dz_final_layer(x1, y1)
+    error2 = perceptron.dC_dz_final_layer(x2, y2)
+    error_matrix = perceptron.dC_dz_final_layer_multi_example(x_list, y_list)
 
-    print("First input:")
-    [print(inv_combine(A)[0], "\n") for A in As]
-    
-    print("Second input:")
-    [print(inv_combine(A)[1], "\n") for A in As]
+    print(error1, 2*"\n", error2, 2*"\n", error_matrix)
+
+    # -- feedforward --
+    # _, As = perceptron.feedforward_multi_example(examples)
+
+    # print("First input:")
+    # [print(mt.inv_combine(A)[0], "\n") for A in As]
+
+    # print("Second input:")
+    # [print(mt.inv_combine(A)[1], "\n") for A in As]
 
 
 if __name__ == "__main__":
