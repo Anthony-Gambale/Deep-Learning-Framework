@@ -30,5 +30,5 @@ My main research for this project.
 http://neuralnetworksanddeeplearning.com/
  * *Neural Networks* web series by Grant Sanderson:  
 https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi
- * *Neural Networks and Deep Learning* web series by Andrew Ng, especially W3L04 and W3L05  
+ * *Deep Learning Specialization Course* web series by Andrew Ng and Deeplearning.ai
 https://www.youtube.com/playlist?list=PLkDaE6sCZn6Ec-XTbcX1uRg2_u4xOEky0
