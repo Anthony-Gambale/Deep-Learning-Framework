@@ -18,7 +18,7 @@ Finally, in this project, I am going to challenge myself to program the entire t
 *(not yet implemented)*
 
 ## Features
- * *(not yet implemented)* Neural network model with scalable size, and feedforward capability using weight matrices
+ * Neural network model with scalable size, and feedforward capability using weight matrices
  * *(not yet implemented)* Backpropagation step function, that can be iterated
  * *(not yet implemented)* Support one-step, multi-example learning, by squashing multiple examples one single matrix
  * *(not yet implemented)* I might use the API to create a GUI web app, where the user can experiment with different sizes and datasets
