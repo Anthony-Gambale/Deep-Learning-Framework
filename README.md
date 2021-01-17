@@ -33,3 +33,5 @@ https://www.youtube.com/playlist?list=PLZHQObOWTQDNU6R1_67000Dx_ZCJB-3pi
 https://sudeepraja.github.io/Neural/
  * *Matrix Based Back-propagation* article by Hind Sellouk:  
 https://medium.com/@hindsellouk13/matrix-based-back-propagation-fe143ce2b2df
+ * *Neural Networks and Deep Learning* web series by Andrew Ng  
+https://www.youtube.com/playlist?list=PLkDaE6sCZn6Ec-XTbcX1uRg2_u4xOEky0
