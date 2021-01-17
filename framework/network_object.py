@@ -86,8 +86,10 @@ def main():
 
     _, As = perceptron.feedforward_multi_example(examples)
 
+
     print("First input:")
     [print(inv_combine(A)[0], "\n") for A in As]
+    
     print("Second input:")
     [print(inv_combine(A)[1], "\n") for A in As]
 
