@@ -8,7 +8,7 @@ My goal with this project is to combine my knowledge of calculus/matrices with m
 
 I will also make the model scalable to any size, so that this program could potentially be used as an API for a real project.
 
-Finally, in this project, I am going to challenge myself to program the entire thing without reading the example code in Michael Nielsen's book. Instead, I'm going to study the algorithms conceptually, and try to implement them 'freestyle.' This is because I want to make sure I am properly learning the concepts, rather than mindlessly plagiarising.
+Also, I am going to challenge myself to program the entire thing without reading the example code in Michael Nielsen's book. Instead, I'm going to study the algorithms conceptually, and try to implement them 'freestyle.' This is because I want to make sure I'm properly learning the concepts, rather than mindlessly plagiarising.
 
 ## Requirements
  * Numpy (for matrix operations)  
