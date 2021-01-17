@@ -34,9 +34,9 @@ class Network():
         # make both weights and biases have no 0th index. this is to make sure that the indices of weights and biases line up with L from the math.
         # nothing should have a 0th index, except for a.
 
-        self.weights = [None] + [np.zeros((rows, columns)) for rows, columns in zip(layer_node_numbers[1:], layer_node_numbers[:-1])]
+        self.weights = [None] + [np.zeros((rows, columns))+1 for rows, columns in zip(layer_node_numbers[1:], layer_node_numbers[:-1])]
 
-        self.biases = [None] + [np.zeros((rows, 1)) for rows in layer_node_numbers[1:]]
+        self.biases = [None] + [np.zeros((rows, 1))+1 for rows in layer_node_numbers[1:]]
 
 
     def feedforward(self, x):
@@ -61,7 +61,6 @@ class Network():
         the regular feedforward algorithm above.
         '''
         X = combine(x_list)
-        print(X)
 
         Zs = [None] # no 0th element for Zs
         As = [X] # the 0th element of As is X
@@ -85,9 +84,12 @@ def main():
 
     examples = [x1, x2]
 
-    Zs, As = perceptron.feedforward_multi_example(examples)
+    _, As = perceptron.feedforward_multi_example(examples)
 
-    print(As[0], "\n", Zs[1])
+    print("First input:")
+    [print(inv_combine(A)[0], "\n") for A in As]
+    print("Second input:")
+    [print(inv_combine(A)[1], "\n") for A in As]
 
 
 if __name__ == "__main__":
