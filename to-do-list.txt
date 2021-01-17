@@ -1,6 +1,8 @@
 
-
+complete
  1: create a neural network object with feedforward. make sure the feedforward is done using matrix maths, and that it outputs the whole array of z and a values, rather than just the final a value.
+
+to-do
  2: implement sigmoid(z) and sigmoid_prime(z)
  3: create a dC/dz function, that computes the loss of the output nodes. maybe make it work with the 'multi-example, one matrix' technique
  4: read http://neuralnetworksanddeeplearning.com/chap2.html#the_backpropagation_algorithm and look back over the 4 equations to decide how to implement the backpropagation algorithm
