@@ -75,35 +75,59 @@ class Network():
         return Zs, As
 
 
-    def dC_dz_final_layer(self, x, y):
-        '''
-        find the derivative of the Cost with respect to the z values of the output layer, **with respect to a single input/output pair** (x,y).
+    # def dC_dz_final_layer(self, x, y):
+    #     '''
+    #     find the derivative of the Cost with respect to the z values of the output layer, **with respect to a single input/output pair** (x,y).
         
-        Cx = 0.5 * (a - y) ^ 2
-        a = s(z)
-        dCx/da = 0.5 * 2 * (a - y) = (a - y)
-        da/dz = s'(z)
-        dCx/dz = dCx/da * da/dz = (a - y) * s'(z)
+    #     Cx = 0.5 * (a - y) ^ 2
+    #     a = s(z)
+    #     dCx/da = 0.5 * 2 * (a - y) = (a - y)
+    #     da/dz = s'(z)
+    #     dCx/dz = dCx/da * da/dz = (a - y) * s'(z)
 
-        the output is a column vector, with the error for each node in the output layer stacked in a column.
-        '''
-        zs, activations = self.feedforward(x)
+    #     the output is a column vector, with the error for each node in the output layer stacked in a column.
+    #     '''
+    #     zs, activations = self.feedforward(x)
 
-        return (activations[-1] - y) * sigmoid_prime(zs[-1]) # hadamard product
+    #     return (activations[-1] - y) * sigmoid_prime(zs[-1]) # hadamard product
     
 
-    def dC_dz_final_layer_multi_example(self, x_list, y_list):
-        '''
-        do the same thing as the previous function, but with a big X matrix, where each column is an x vector, and a big Y matrix, where each column is a y vector.
-        also, A matrices are a big matrix where each column is an a vector, etc. the formula holds for this case.
+    # def dC_dz_final_layer_multi_example(self, x_list, y_list):
+    #     '''
+    #     do the same thing as the previous function, but with a big X matrix, where each column is an x vector, and a big Y matrix, where each column is a y vector.
+    #     also, A matrices are a big matrix where each column is an a vector, etc. the formula holds for this case.
 
-        the output is a matrix, where each column is a column vector of the error for each node in the output layer for a certain x/y pair. each column is a different x/y pair, and each row is a different
-        node in the output layer.
-        '''
-        Y = mt.combine(y_list)
-        Zs, As = self.feedforward_multi_example(x_list)
+    #     the output is a matrix, where each column is a column vector of the error for each node in the output layer for a certain x/y pair. each column is a different x/y pair, and each row is a different
+    #     node in the output layer.
+    #     '''
+    #     Y = mt.combine(y_list)
+    #     Zs, As = self.feedforward_multi_example(x_list)
 
-        return (As[-1] - Y) * sigmoid_prime(Zs[-1])
+    #     return (As[-1] - Y) * sigmoid_prime(Zs[-1])
+
+
+    def dC_dz_all_layers(self, x, y):
+        '''
+        find the dC/dz functions for all layers, with respect to the given input and output, x and y.
+
+        BP2:
+        dC/dz(L)  =  (w(L+1)(T) . dC/dz(L+1)) . da/dz(L)
+        dC/dz(L)  =  (w(L+1)(T) . dC/dz(L+1)) . sigmoid_prime(z(L))
+
+        Note that the weight matrix needs to be transposed, because the errors in the layer on the right are effectively being feedforwarded, but backwards. the number of rows and columns needs
+        to be swapped so that the input size is what would normally be the output in ff, and vice versa; the output size is what would normally be the input in ff.
+        '''
+        deltas = [None for i in range(self.L)] # the delta character is used for the error matrices, dC/dz.
+
+        zs, activations = self.feedforward(x)
+
+        deltas[-1] = (activations[-1] - y) * sigmoid_prime(zs[-1])
+
+        for L in range(-2, -self.L, -1):
+
+            deltas[L] = np.matmul( np.transpose(self.weights[L+1]), deltas[L+1] ) * sigmoid_prime(zs[L])
+        
+        return deltas
 
 
 def main():
