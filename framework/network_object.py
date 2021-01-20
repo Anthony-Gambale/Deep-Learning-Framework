@@ -167,7 +167,7 @@ def main():
 
     # -- error --
     error1 = perceptron.dC_dz_all_layers(x1, y1)
-    error2 = perceptron.dC_dz_all_layers(x2, y2)
+    error2 = perceptron.dC_dz_all_layers(x2, y2) # or, all_layers_multi_example([x2], [y2]) also works!
     error_matrix = perceptron.dC_dz_all_layers_multi_example(x_list, y_list)
 
     print(error1, 2*"\n", error2, 2*"\n", error_matrix)
