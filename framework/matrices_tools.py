@@ -10,7 +10,10 @@ def combine(matrices):
     X = combine([x1, x2, x3, x4 ... xm])
     Y = combine([y1, y2, y3, y4 ... ym])
     '''
-    return np.concatenate(matrices, axis=1)
+    if len(matrices) > 1:
+        return np.concatenate(matrices, axis=1)
+    else:
+        return matrices[0]
 
 
 def inv_combine(matrix):

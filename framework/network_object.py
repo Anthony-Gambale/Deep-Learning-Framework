@@ -7,6 +7,7 @@ import matrices_tools as mt
 
 # sigmoid
 def sigmoid(z):
+    print(z)
     '''return sigmoid z'''
     return 1.0/(1.0+np.exp(-z))
 
@@ -124,7 +125,7 @@ class Network():
 
         deltas[-1] = (activations[-1] - y) * sigmoid_prime(zs[-1])
 
-        for L in range(-2, -self.L-1, -1):
+        for L in range(-2, -self.L, -1):
 
             deltas[L] = np.matmul( np.transpose(self.weights[L+1]), deltas[L+1] ) * sigmoid_prime(zs[L])
         
@@ -143,7 +144,7 @@ class Network():
 
         deltas[-1] = (As[-1] - Y) * sigmoid_prime(Zs[-1])
 
-        for L in range(-2, -self.L-1, -1):
+        for L in range(-2, -self.L, -1):
 
             deltas[L] = np.matmul( np.transpose(self.weights[L+1]), deltas[L+1] ) * sigmoid_prime(Zs[L])
 
@@ -153,7 +154,7 @@ class Network():
 def main():
     '''run some code to test that it all works.'''
     #  -- init --
-    perceptron = Network((2, 3, 1))
+    perceptron = Network((2, 3, 2))
 
     x1 = np.array([[1], [1]])
     x2 = np.array([[4], [4]])
@@ -165,11 +166,12 @@ def main():
     y_list = [y1, y2]
 
     # -- error --
-    error1 = perceptron.dC_dz_all_layers(x1, y1)
+    perceptron.dC_dz_all_layers_multi_example(x1, y1)
+    '''error1 = perceptron.dC_dz_all_layers(x1, y1)
     error2 = perceptron.dC_dz_all_layers(x2, y2)
     error_matrix = perceptron.dC_dz_all_layers_multi_example(x_list, y_list)
 
-    print(error1, 2*"\n", error2, 2*"\n", error_matrix)
+    print(error1, 2*"\n", error2, 2*"\n", error_matrix)'''
 
     # -- feedforward --
     # _, As = perceptron.feedforward_multi_example(examples)
