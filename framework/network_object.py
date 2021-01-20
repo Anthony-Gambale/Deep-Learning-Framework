@@ -117,16 +117,36 @@ class Network():
         Note that the weight matrix needs to be transposed, because the errors in the layer on the right are effectively being feedforwarded, but backwards. the number of rows and columns needs
         to be swapped so that the input size is what would normally be the output in ff, and vice versa; the output size is what would normally be the input in ff.
         '''
-        deltas = [None for i in range(self.L)] # the delta character is used for the error matrices, dC/dz.
-
+        
         zs, activations = self.feedforward(x)
+
+        deltas = [None for i in range(self.L)] # the delta character is used for the error matrices, dC/dz.
 
         deltas[-1] = (activations[-1] - y) * sigmoid_prime(zs[-1])
 
-        for L in range(-2, -self.L, -1):
+        for L in range(-2, -self.L-1, -1):
 
             deltas[L] = np.matmul( np.transpose(self.weights[L+1]), deltas[L+1] ) * sigmoid_prime(zs[L])
         
+        return deltas
+    
+
+    def dC_dz_all_layers_multi_example(self, x_list, y_list):
+        '''
+        do the same as the function above, but with multiple x input vectors and y output vectors all squished into individual, 2 dimensional input and output matrices. 
+        '''
+        Y = mt.combine(y_list) # combine a list of vectors into a single matrix with each vector as a column
+
+        Zs, As = self.feedforward_multi_example(x_list) # this function turns the x vector list into a single matrix by itself
+
+        deltas = [None for i in range(self.L)] # one delta per layer, where each delta matrix has a separate column for each
+
+        deltas[-1] = (As[-1] - Y) * sigmoid_prime(Zs[-1])
+
+        for L in range(-2, -self.L-1, -1):
+
+            deltas[L] = np.matmul( np.transpose(self.weights[L+1]), deltas[L+1] ) * sigmoid_prime(Zs[L])
+
         return deltas
 
 
@@ -135,19 +155,19 @@ def main():
     #  -- init --
     perceptron = Network((2, 3, 1))
 
-    x1 = [[1], [1]]
-    x2 = [[4], [4]]
+    x1 = np.array([[1], [1]])
+    x2 = np.array([[4], [4]])
 
-    y1 = [[1], [1]]
-    y2 = [[1], [1]]
+    y1 = np.array([[1], [1]])
+    y2 = np.array([[1], [1]])
 
     x_list = [x1, x2]
     y_list = [y1, y2]
 
     # -- error --
-    error1 = perceptron.dC_dz_final_layer(x1, y1)
-    error2 = perceptron.dC_dz_final_layer(x2, y2)
-    error_matrix = perceptron.dC_dz_final_layer_multi_example(x_list, y_list)
+    error1 = perceptron.dC_dz_all_layers(x1, y1)
+    error2 = perceptron.dC_dz_all_layers(x2, y2)
+    error_matrix = perceptron.dC_dz_all_layers_multi_example(x_list, y_list)
 
     print(error1, 2*"\n", error2, 2*"\n", error_matrix)
 
