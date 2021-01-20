@@ -7,7 +7,6 @@ import matrices_tools as mt
 
 # sigmoid
 def sigmoid(z):
-    print(z)
     '''return sigmoid z'''
     return 1.0/(1.0+np.exp(-z))
 
@@ -135,6 +134,7 @@ class Network():
     def dC_dz_all_layers_multi_example(self, x_list, y_list):
         '''
         do the same as the function above, but with multiple x input vectors and y output vectors all squished into individual, 2 dimensional input and output matrices. 
+        make sure that the input vectors are all inside an array! do not input loose vectors. even for a single input and output vector, x and y, input [x] and [y].
         '''
         Y = mt.combine(y_list) # combine a list of vectors into a single matrix with each vector as a column
 
@@ -166,12 +166,11 @@ def main():
     y_list = [y1, y2]
 
     # -- error --
-    perceptron.dC_dz_all_layers_multi_example(x1, y1)
-    '''error1 = perceptron.dC_dz_all_layers(x1, y1)
+    error1 = perceptron.dC_dz_all_layers(x1, y1)
     error2 = perceptron.dC_dz_all_layers(x2, y2)
     error_matrix = perceptron.dC_dz_all_layers_multi_example(x_list, y_list)
 
-    print(error1, 2*"\n", error2, 2*"\n", error_matrix)'''
+    print(error1, 2*"\n", error2, 2*"\n", error_matrix)
 
     # -- feedforward --
     # _, As = perceptron.feedforward_multi_example(examples)
