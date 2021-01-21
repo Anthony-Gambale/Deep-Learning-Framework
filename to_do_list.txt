@@ -4,7 +4,8 @@ complete
  2: implement sigmoid(z) and sigmoid_prime(z)
  3: create a dC/dz function, that computes the loss of the output nodes.
  4: make step 3 work with the 'multi-example, one matrix' technique
+ 5: implement the second equation of backpropagation. Make a function that returns an array of all the dC/dz values for each layer.
+ 6: implement dC/db using dC/dz
 
 to-do
- 5: implement the second equation of backpropagation. Make a function that returns an array of all the dC/dz values for each layer.
- 6: do some research to see how dC/dz can be turned into dC/dw without iterating over every single weight.
+ 7: implement dC/dw using dC/dz

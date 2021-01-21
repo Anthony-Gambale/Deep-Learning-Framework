@@ -149,6 +149,34 @@ class Network():
         return deltas
 
 
+    def dC_db_all_layers(self, x, y):
+        '''
+        Return an array of vectors, where each vector contains the dC_db value for the corresponding bias.
+        This array of vectors will be the exact same shape as self.biases.
+
+        dC_db = dC_dz * dz_db
+        dz_db = 1
+        therefore dC_db = dC_dz
+        = deltas
+        '''
+        return self.dC_dz_all_layers(x, y) # just return the deltas, they are the bias derivatives
+    
+
+    def dC_db_all_layers_multi_example(self, x_list, y_list):
+        '''same as function above, dC_db = deltas'''
+        return self.dC_dz_all_layers_multi_example(x_list, y_list)
+    
+
+    def dC_dw_all_layers(self, x, y):
+        '''
+        based on the 4th backpropagation equation:
+
+        dC/dw(jk)(l) = a(k)(l-1) . delta(j)(l)
+
+        for the weight in the jth row and kth column of the lth weight matrix, find the derivative by multiplying the kth activation of the l-1th layer with the delta value of the jth neuron in the lth layer.
+        '''
+
+
 def main():
     '''run some code to test that it all works.'''
     #  -- init --

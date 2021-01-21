@@ -19,9 +19,9 @@ Also, I am going to challenge myself to program the entire thing without reading
 
 ## Features
  * Neural network model with scalable size, and feedforward capability using weight matrices
- * *(not yet implemented)* Backpropagation step function, that can be iterated
+ * *(started)* Backpropagation step function, that can be iterated
  * *(started)* Support one-step, multi-example learning, by squashing multiple examples into one single matrix
- * *(not yet implemented)* I might use the API to create a GUI web app, where the user can experiment with different sizes and datasets
+ * *(not yet implemented)* Use the API to create a GUI app, where the user can experiment with different network configs and datasets, and the neural network they create is displayed in a graph on the screen
  * *(not yet implemented)* More sophisticated types of neural networks, like CNNs or RNNs, rather than the basic feedforward net
 
 ## Sources
