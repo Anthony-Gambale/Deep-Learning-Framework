@@ -125,7 +125,6 @@ class Network():
         deltas[-1] = (activations[-1] - y) * sigmoid_prime(zs[-1])
 
         for L in range(-2, -self.L, -1):
-
             deltas[L] = np.matmul( np.transpose(self.weights[L+1]), deltas[L+1] ) * sigmoid_prime(zs[L])
         
         return deltas
@@ -145,7 +144,6 @@ class Network():
         deltas[-1] = (As[-1] - Y) * sigmoid_prime(Zs[-1])
 
         for L in range(-2, -self.L, -1):
-
             deltas[L] = np.matmul( np.transpose(self.weights[L+1]), deltas[L+1] ) * sigmoid_prime(Zs[L])
 
         return deltas
@@ -154,10 +152,10 @@ class Network():
 def main():
     '''run some code to test that it all works.'''
     #  -- init --
-    perceptron = Network((2, 3, 2))
+    perceptron = Network((1, 3, 2))
 
-    x1 = np.array([[1], [1]])
-    x2 = np.array([[4], [4]])
+    x1 = np.array([[1]])
+    x2 = np.array([[4]])
 
     y1 = np.array([[1], [1]])
     y2 = np.array([[1], [1]])
