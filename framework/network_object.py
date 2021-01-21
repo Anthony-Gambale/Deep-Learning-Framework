@@ -175,6 +175,7 @@ class Network():
 
         for the weight in the jth row and kth column of the lth weight matrix, find the derivative by multiplying the kth activation of the l-1th layer with the delta value of the jth neuron in the lth layer.
         '''
+        return True
 
 
 def main():
