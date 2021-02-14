@@ -2,6 +2,8 @@
 # Deep-Learning-Framework
 A deep learning framework, made from scratch in python.
 
+![image](https://github.com/Anthony-Gambale/Deep-Learning-Framework/blob/main/framework/diagram.png)
+
 ## Introduction
 
 My goal with this project is to combine my knowledge of calculus/matrices with my knowledge of the feedforward function in neural networks, to learn the concept of backpropagation.
