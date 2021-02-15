@@ -3,6 +3,7 @@
 A deep learning framework, made from scratch in python.
 
 Network Structure:
+
 ![image](https://github.com/Anthony-Gambale/Deep-Learning-Framework/blob/main/framework/diagram.png)
 
 ## Introduction
