@@ -8,7 +8,7 @@ Network Structure:
 
 ## Introduction
 
-My goal with this project is to learn the concept of backpropagation. I am already familiar with neural network feedforward, as well as basic calculus and linear algebra, so backpropagation is the next big challenge for me to tackle. My final goal is to implement it in this project.
+My goal with this project is to learn the concept of backpropagation. I am already familiar with neural network feedforward, as well as core calculus and linear algebra, so backpropagation is my next major milestone. My final goal is to implement it in this project.
 
 I will also make the model scalable to any size, so that this program could potentially be used as a tool for real data analysis.
 
